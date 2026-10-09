@@ -1,0 +1,108 @@
+/*  Loaded after work.css   */
+.empty[hidden] {
+    display: none;
+}
+
+.gallery {
+    columns: 3 16rem;
+    column-gap: 1.5rem;
+}
+
+.piece {
+    margin: 0 0 1.5rem;
+    break-inside: avoid;
+}
+
+.piece-button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 0 var(--accent);
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.piece-btn:hover,
+.piece-btn:focus-visible {
+  transform: translate(-4px, -4px);
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+.piece-btn:active {
+  transform: none;
+  box-shadow: 0 0 0 var(--accent);
+}
+
+.piece-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+ 
+.piece-cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.25rem 0;
+}
+ 
+.piece-title {
+  font-family: var(--font-head);
+  font-weight: 500;
+  color: var(--heading);
+}
+ 
+.piece-kind {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  width: min(92vw, 56rem);
+  max-height: 92vh;
+  padding: 0;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+ 
+.lightbox::backdrop {
+  background: rgba(20, 8, 10, 0.82);
+}
+ 
+.lightbox-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+ 
+.lightbox-close {
+  align-self: flex-end;
+}
+ 
+.lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: 68vh;
+  margin-inline: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+.lightbox-shop {
+  display: none;
+}
+ 
+.lightbox-caption { margin: 0; }
+ 
+@media (prefers-reduced-motion: reduce) {
+  .piece-btn { transition: none; }
+}

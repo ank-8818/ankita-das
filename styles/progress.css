@@ -1,0 +1,130 @@
+:root {
+    --done: #556B4B;
+}
+
+[data-theme="design"] {
+    --done: #A9C79A;
+}
+
+
+.progress {
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 4rem);
+    scroll-margin-top: 4.25rem;
+}
+
+.progress-title {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--heading);
+}
+
+.progress-now {
+    margin: 0 0 1.5rem;
+    font-size: 1.2rem;
+}
+
+.progress-meter {
+    max-width: 28rem;
+    margin-bottom: 2rem;
+}
+
+.progress-meter label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 0.75rem;
+    accent-color: var(--accent);
+}
+
+
+/* ---------------- Timeline ------------------- */
+.tl {
+    max-width: 40rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tl-item {
+    position: relative;
+    padding: 0 0 1.8rem 2.25rem;
+}
+
+/* marker */
+.tl-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--heading);
+    border-radius: 50%;
+}
+
+.tl-item::after {
+    content: "";
+    position: absolute;
+    left: calc(0.5rem - 1px);
+    top: 1.6rem;
+    bottom: 0.1rem;
+    width: 2px;
+    background: var(--line);
+}
+
+.tl-item:last-child::after {
+    display: none;
+}
+
+.tl-item--done::before {
+    background: var(--done);
+    border-color: var(--done);
+}
+
+.tl-item--doing::before {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(212, 80, 96, 0.3);
+}
+
+.tl-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+}
+
+.tl-title {
+    margin: 0;
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--heading);
+}
+
+.tl-status {
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.tl-item--doing .tl-status {
+    color: var(--link);
+    opacity: 1;
+}
+
+.tl-when, .tl-note {
+    margin: 0.15rem 0 0;
+}
+
+.tl-when {
+    font-size: 0.9rem;
+    opacity: 0.6;
+}

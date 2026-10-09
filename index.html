@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankita Das | Web developer and Illustrator</title>
+    <meta name="description" content="Portfolio of Ankita Das: websites and illustration.">
+    <meta property="og:title" content="Ankita Das | Web developer and illustrator">
+    <meta property="og:description" content="Websites, illustrations and patterns.">
+    <!-- <meta property="og:image" content="https://your-site-address/images/screenshots/"> -->
+
+    <!--Favicon-->
+    <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg" />
+    <link rel="shortcut icon" href="./favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+
+    <!--Link to fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Parisienne&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+    <!--CSS Stylesheets-->
+    <link href="./styles/hero.css" rel="stylesheet">
+    <link href="./styles/work.css" rel="stylesheet">
+    <link href="./styles/design.css" rel="stylesheet">
+    <link href="./styles/progress.css" rel="stylesheet">
+    <link href="./styles/about-skills.css" rel="stylesheet">
+    <link href="./styles/contact.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+    <!--Nav Bar-->
+    <header class="nav">
+        <img src="./images/logo/personal-logo.svg" alt="logo" class="navbar-logo" aria-label="Ankita Das, home">
+        <img src="./images/logo/personal-logo-light.svg" alt="logo" aria-hidden="true" class="navbar-logo-light" aria-label="Ankita Das, home">
+        
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a class="nav-link" href="#work">Work</a></li>
+            <li><a class="nav-link" href="#about">About</a></li>
+            <li><a class="nav-link" href="#skills">Skills</a></li>
+            <li><a class="nav-link" href="#contact">Contact</a></li>
+            <li><a class="nav-link" href="./assets/Ankita-Das-CV.pdf" target="_blank" rel="noopener">CV</a></li>     <!--CV pdf here-->
+        </ul>
+
+    </header>
+
+
+    <main id="top">
+
+        <!--Hero section-->
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-hello">Hello, I'm</p>
+                <h1 class="hero-name">Ankita Das</h1>
+                <!-- <p class="hero-role">Web developer and illustrator</p> -->
+                <p class="hero-role hero-role--web">Web developer</p>
+                <p class="hero-role hero-role--design">Illustrator</p>
+
+                <p class="hero-intro hero-intro--web">I enjoy turning ideas into responsive, intuitive websites where every interaction has a purpose.</p>
+                <p class="hero-intro hero-intro--design">I enjoy turning ideas into illustrations and visual details that give them a personality.</p>
+
+                <div class="hero-actions">
+                    <a class="btn" href="#work">See my work</a>
+                    <a class="btn btn-soft" href="#contact">Get in touch</a>
+                </div>
+
+                <div class="switch" role="group" aria-label="Choose which side of my work to view">
+                    <button class="switch-btn" data-side="web" aria-pressed="true">Web dev</button>
+                    <button class="switch-btn" data-side="design" aria-pressed="false">Design</button>                    
+                </div>
+            </div>
+
+
+            <img class="hero-mandala" src="./images/mandala.svg" alt="" aria-hidden="true">            
+        </section>
+
+
+        <!--Divider-->
+        <img class="divider" src="./images/divider-dark.svg" alt="" aria-hidden="true" >
+
+
+        <!--Work section-->
+        <section class="work" id="work">
+            <h2 class="work-title">Work</h2>
+
+            <!--Shown when switch is on web dev-->
+            <div class="work-web" data-panel="web">
+                <p class="work-lead">A few websites I've built, from layout experiments to interactive experiences.</p>
+                <div class="work-grid" id="work-grid">
+                
+                </div>
+            </div>
+
+            <!--Shown when the switch is on design-->
+            <div class="work-design" data-panel="design" hidden>
+                <p class="work-lead">Patterns and Illustrations.</p>
+                <div class="gallery" id="design-grid"></div>
+
+                <!---shows only while designPieces is empty-->
+                <div class="empty" id="design-empty" hidden>
+                    <img class="empty-img" src="./images/floral-element.svg" alt="">
+                    <p>Design pieces are on their way.</p>
+                </div>
+            </div>
+
+            <dialog class="lightbox" id="lightbox" aria-label="Enlarged design">
+                <div class="lightbox-inner">
+                    <button class="btn btn-small btn-soft lightbox-close" type="button">Close</button>
+                    <img class="lightbox-img" src="" alt="">
+                    <p class="lightbox-caption"></p>
+                    <a class="btn btn--small lightbox-shop" href="#" target="_blank" rel="noopener">View in shop</a>
+                </div>
+            </dialog>
+
+        </section>
+
+        <!--Divider-->
+        <img class="divider" src="./images/divider-dark.svg" alt="" aria-hidden="true" >
+
+
+        <!--Progress section-->
+        <section class="progress" id="progress" aria-labelledby="progress-title">
+            <h2 class="progress-title" id="progress-title">What I'm working on</h2>
+
+            <ol class="tl" id="timeline"></ol>
+        </section>
+
+
+        <!--About section-->
+        <section class="about" id="about" aria-labelledby="about-title">
+            <div class="about-text">
+                <h2 class="about-title" id="about-title">About me</h2>
+
+                <!--draft-->
+                <p>I studied mathematics and completed my MSc, but I've never really stopped being a student. Now I'm learning through design and web development—playing with colours, layouts, illustrations, and figuring out how a button goes from looking right to actually working.</p>
+                <p>I draw in Illustrator, build with HTML, CSS, and JavaScript, and occasionally turn those illustrations into patterns for my small shop.</p>
+                <p>There's still a lot I'm learning, and honestly, that's half the fun.</p>
+                <a class="btn" href="#contact">Get in touch</a>
+            </div>
+
+            <img class="about-art" src="./images/floral-element.svg" alt="">
+        </section>
+
+
+        <!--Skills section-->
+        <section class="skills" id="skills" aria-labelledby="skills-title">
+            <h2 class="skills-title" id="skills-title">Skills</h2>
+            
+            <p class="skills-legend">
+                <span><span class="skill-dots" data-level="1" aria-hidden="true"></span> Learning</span>
+                <span><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
+                <span><span class="skill-dots" data-level="3" aria-hidden="true"></span> Confident</span>
+            </p>
+            
+            <div class="skills-groups">
+                <div class="skills-group">
+                    <h3 class="skills-label">Web development</h3>
+                    <ul class="skill-list">
+                        <li class="skill">
+                            <div class="skill-top">
+                                <span class="skill-name">HTML</span>
+                                <span class="skill-level"><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
+                            </div>
+                            <p class="skill-note">Used in Pulp &amp; Peel and Bloom &amp; Co.</p>
+                        </li>
+                        <li class="skill">
+                            <div class="skill-top">
+                                <span class="skill-name">CSS</span>
+                                <span class="skill-level"><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
+                            </div>
+                            <p class="skill-note">Layouts, the two-theme system, and animations on this site.</p>
+                        </li>
+                        <li class="skill">
+                            <div class="skill-top">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-level"><span class="skill-dots" data-level="1" aria-hidden="true"></span> Learning</span>
+                            </div>
+                            <p class="skill-note">DOM, events, form validation. Booking flow in Bloom & Co., quiz logic in Which Star Are You.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="skills-group">
+                    <h3 class="skills-label">Design</h3>
+                    <ul class="skill-list">
+                        <li class="skill">
+                            <div class="skill-top">
+                                <span class="skill-name">Adobe Illustrator</span>
+                                <span class="skill-level"><span class="skill-dots" data-level="3" aria-hidden="true"></span> Confident</span>
+                            </div>
+                            <p class="skill-note">Used for my illustrations, patterns and visual experiments.</p>
+                        </li>
+                        <li class="skill">
+                            <div class="skill-top">
+                                <span class="skill-name">Seamless patterns</span>
+                                <span class="skill-level"><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
+                            </div>
+                            <p class="skill-note">Citrus and leaf collections, tiled for repeat use.</p>
+                        </li>
+                        <li class="skill">
+                            <div class="skill-top">
+                                <span class="skill-name">Character illustration</span>
+                                <span class="skill-level"><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
+                            </div>
+                            <p class="skill-note">Aries, Taurus and Queen of Diamonds.</p>
+                        </li>
+                        <li class="skill">
+                            <div class="skill-top">
+                                <span class="skill-name">Logo & colour palette design</span>
+                                <span class="skill-level"><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
+                            </div>
+                            <p class="skill-note">Bloom & Co. branding and visual identity.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- -------------------- Edit this for the currently learning section ----------------------- -->
+            <div class="skills-learning">
+                <h3 class="skills-learning-title">Currently learning</h3>
+
+                <div class="skills-groups">
+
+                    <!-- Web dev -->
+                    <ul class="skill-list" aria-label="Web development, currently learning">
+                        <li class="skill">
+                            <div class="skill-top">
+                                <span class="skill-name">Node.js &amp; Express</span>
+                            </div>
+                            <p class="skill-note">Putting the basics to use in the Thought Dump blog.</p>
+                        </li>
+                    </ul>
+
+
+                    <!-- Design -->
+                    <ul class="skill-list" aria-label="Design, currently learning">
+                        <li class="skill">
+                            <div class="skill-top">
+                                <span class="skill-name">Figma</span>
+                            </div>
+                            <p class="skill-note">Learning the basics, starting with the Thought Dump interface.</p>
+                        </li>
+                        <li class="skill">
+                            <div class="skill-top">
+                                <span class="skill-name">Typography</span>
+                            </div>
+                            <p class="skill-note">Type pairing and hierarchy, for both web and print pieces.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!--Contact section-->
+        <section class="contact" id="contact" aria-labelledby="contact-title">
+            <div class="contact-intro">
+                <h2 class="contact-title" id="contact-title">Get in touch</h2>
+                <p>Have a project in mind, or just want to say hello? I'll get back to you soon.</p>
+                <p>Open to junior front-end roles, and to freelance websites, illustration and pattern commissions.</p>
+
+                <ul class="contact-links">
+                    <li><a href="mailto:ankitadas8818@gmail.com">ankitadas8818@gmail.com</a></li>
+                    <li><a href="https://github.com/ank-8818/" target="_blank" rel="noopener">Github</a></li>
+                    <li><a href="https://patterntheoryshop.gumroad.com/" target="_blank" rel="noopener">Gumroad</a></li>
+                </ul>
+            </div>
+
+            <form class="contact-form" id="contact-form" method="post">
+                <div class="field">
+                    <label for="c-name">Name</label>
+                    <input id="c-name" name="name" type="text" autocomplete="name" required>
+                </div>
+
+                <div class="field">
+                    <label for="c-email">Email</label>
+                    <input id="c-email" name="email" type="email" autocomplete="email" required>
+                </div>
+
+                <div class="field">
+                    <label for="c-message">Message</label>
+                    <textarea id="c-message" name="message" rows="6" required></textarea>
+                </div>
+
+
+                <div class="hp" aria-hidden="true">
+                    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+                </div>
+
+                <input type="hidden" name="_subject" value="New message from my portfolio">
+
+                <button class="btn" type="submit">Send message</button>
+                <p class="contact-status" id="contact-status" role="status"></p>
+            </form>
+        </section>
+
+
+    </main>
+
+
+    <!--Footer-->
+    <footer class="footer">
+        <p>&copy; 2026 Ankita Das. All artwork on this site is my own.</p>
+        <a href="#top">Back to top</a>
+    </footer>
+
+
+
+    <!--JS Script file-->
+    <script src="./js/web-dev.js"></script>
+    <script src="./js/design.js"></script>
+    <script src="./js/progress.js"></script>
+    <script src="./js/contact.js"></script>
+
+</body>
+</html>

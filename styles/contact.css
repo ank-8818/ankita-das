@@ -1,0 +1,110 @@
+/* Disabled buttons */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+
+/* -------------------- Contact ----------------------- */
+.contact {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 4rem);
+    background: var(--panel);
+    scroll-margin-top: 4.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.contact-title {
+    margin: 0 0 1rem;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--heading);
+}
+
+.contact-intro p {
+    max-width: 36ch;
+    margin: 0 0 1.5rem;
+}
+
+.contact-links {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-links a {
+    font-weight: 500;
+}
+
+/* --------------------- Form ----------------------*/
+.field {
+    margin-bottom: 1.25rem;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.field input, .field textarea {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font: inherit;
+    color: var(--text);
+    background: var(--bg);
+    border: 1.5px solid var(--heading);
+    border-radius: 0.5rem;
+}
+
+.field textarea {
+    min-height: 1.6rem;
+    margin: 1rem 0 0;
+    font-weight: 500;
+}
+
+.hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+
+/* ------------------------- Footer ------------------------------*/
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    padding: 1.5rem clamp(1.25rem, 5vw, 4rem);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--line);
+}
+
+.footer p {
+    margin: 0;
+}
+
+
+@media (max-width: 800px) {
+    .contact {
+        grid-template-columns: 1fr;
+    }
+}
