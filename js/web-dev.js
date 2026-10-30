@@ -14,6 +14,17 @@ const webGrid = document.querySelector("#work-grid");
 const webProjects = [
 
     {
+        title: "Dear Me,",
+        text: "A private-by-default journaling site with accounts, moods, moderation and a hardened backend.",
+        tags: ["Node.js", "Express", "EJS", "SQLite"],
+        image: "./images/web-dev/desktop/dear-me-desktop.png",
+        mobile:"./images/web-dev/mobile/dear-me-mobile.png",
+        alt: "Screenshot of the Dear Me, website",
+        live: "https://dear-me-production.up.railway.app",
+        code: "https://github.com/ank-8818/dear-me"
+    },
+
+    {
         title: "Bloom & Co.",
         text: "An appointment-only salon and spa site where booking actually thinks: pick a bundle and it finds its slot, and the times adapt to each service's length and the salon's opening hours.",
         tags: ["HTML", "CSS", "JavaScript"],

@@ -12,17 +12,9 @@ const timelines = {
     web: [
 
         //  ongoing projects
-        
-
+    
 
         // planned projects
-        {
-            title: "Thought Dump",
-            status: "doing",
-            when: "Oct 2026",
-            note: "A user-generated thought-dump space built with Node.js and Express, with emoticons, stickers, tags, and a deliberately personal, scrapbook-like interface. Currently building design assets."
-        },
-
         {
             title: "Text RPG",
             status: "planned",
@@ -39,6 +31,14 @@ const timelines = {
     design: [
 
         //ongoing projects
+
+        {
+            title: "Drizzle & Dot (a fictional branding project)",
+            status: "doing",
+            when: "Oct 2026",
+            note: "Done with the logo suite and patterns. Currently writing brand guidelines and usage rules."
+        },
+
         {
             title: "Gemini",
             status: "doing",
