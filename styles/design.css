@@ -3,6 +3,163 @@
     display: none;
 }
 
+/* ---------- Category tabs and sections ---------- */
+.design-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+}
+
+.design-tab {
+    padding: 0.45rem 1rem;
+    font: inherit;
+    color: var(--text);
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.design-tab[aria-pressed="true"] {
+    color: var(--bg);
+    background: var(--heading);
+    border-color: var(--heading);
+}
+
+.design-tab:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.design-sec {
+    margin-top: 3rem;
+    scroll-margin-top: 4.25rem;
+}
+
+.design-sec-title {
+    margin: 0 0 0.25rem;
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    color: var(--heading);
+}
+
+.design-sec-lead {
+    max-width: 70ch;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+}
+
+.design-sec[data-cat="patterns"] .gallery {
+    columns: 2 24rem;
+}
+
+/* ---------- Brand cards reuse .card from work.css ---------- */
+.work-design .card-shot {
+    object-fit: contain;
+}
+
+.card-media .piece-btn:hover,
+.card-media .piece-btn:focus-visible {
+    transform: none;
+    box-shadow: none;
+}
+
+/* ---------- Social sets ---------- */
+.set {
+    margin-top: 2rem;
+}
+
+.set-title {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-head);
+    font-size: 1.15rem;
+    color: var(--heading);
+}
+
+.set-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 14rem));
+    gap: 0.75rem;
+    align-items: start;
+}
+
+/* ---------- Pattern carousel ---------- */
+.car {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+}
+
+.car-track {
+    display: flex;
+    transition: transform 0.6s ease;
+}
+
+.car-slide {
+    flex: 0 0 100%;
+    margin: 0;
+}
+
+.car-slide img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.car-slide figcaption {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.car-nav {
+    position: absolute;
+    top: calc(50% - 2rem);
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.4rem;
+    color: var(--heading);
+    background: rgba(20, 8, 10, 0.7);
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.car-prev { left: 0.6rem; }
+.car-next { right: 0.6rem; }
+
+.car-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem;
+}
+
+.car-dots button {
+    width: 0.65rem;
+    height: 0.65rem;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--heading);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.car-dots button[aria-current="true"] {
+    background: var(--heading);
+}
+
+.car-nav:focus-visible,
+.car-dots button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ---------- Pattern and illustration gallery ---------- */
 .gallery {
     columns: 3 16rem;
     column-gap: 1.5rem;
@@ -13,7 +170,8 @@
     break-inside: avoid;
 }
 
-.piece-button {
+/* Fixed: this was .piece-button, which no element uses */
+.piece-btn {
     display: block;
     width: 100%;
     padding: 0;
@@ -27,82 +185,138 @@
 
 .piece-btn:hover,
 .piece-btn:focus-visible {
-  transform: translate(-4px, -4px);
-  box-shadow: 4px 4px 0 var(--accent);
+    transform: translate(-4px, -4px);
+    box-shadow: 4px 4px 0 var(--accent);
 }
 
 .piece-btn:active {
-  transform: none;
-  box-shadow: 0 0 0 var(--accent);
+    transform: none;
+    box-shadow: 0 0 0 var(--accent);
 }
 
 .piece-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 0.75rem;
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
 }
- 
+
 .piece-cap {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.6rem 0.25rem 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.6rem 0.25rem 0;
 }
- 
+
 .piece-title {
-  font-family: var(--font-head);
-  font-weight: 500;
-  color: var(--heading);
+    font-family: var(--font-head);
+    font-weight: 500;
+    color: var(--heading);
 }
- 
+
 .piece-kind {
-  font-size: 0.9rem;
-  opacity: 0.8;
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 
 
 /* ---------- Lightbox ---------- */
 .lightbox {
-  width: min(92vw, 56rem);
-  max-height: 92vh;
-  padding: 0;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 0.75rem;
+    width: min(92vw, 56rem);
+    max-height: 92vh;
+    padding: 0;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
 }
- 
+
 .lightbox::backdrop {
-  background: rgba(20, 8, 10, 0.82);
+    background: rgba(20, 8, 10, 0.82);
 }
- 
+
 .lightbox-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
 }
- 
+
 .lightbox-close {
-  align-self: flex-end;
+    align-self: flex-end;
 }
- 
+
 .lightbox-img {
-  display: block;
-  max-width: 100%;
-  max-height: 68vh;
-  margin-inline: auto;
-  object-fit: contain;
-  border-radius: 0.5rem;
+    display: block;
+    max-width: 100%;
+    max-height: 68vh;
+    margin-inline: auto;
+    object-fit: contain;
+    border-radius: 0.5rem;
 }
 
 .lightbox-shop {
-  display: none;
+    display: none;
 }
- 
-.lightbox-caption { margin: 0; }
- 
+
+.lightbox-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0;
+}
+
+.lightbox-title {
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    color: var(--heading);
+}
+
+.lightbox-desc {
+    max-width: 65ch;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.85;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .piece-btn { transition: none; }
+    .piece-btn { transition: none; }
+    .car-track { transition: none; }
+}
+
+/* ---------- Lightbox gallery arrows ---------- */
+.lightbox-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.lightbox-nav[hidden] {
+    display: none;
+}
+
+.lightbox-count {
+    min-width: 4rem;
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0.85;
+}
+
+/* ---------- Carousel badge on social tiles ---------- */
+.piece-btn {
+    position: relative;
+}
+
+.slide-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.75rem;
+    color: var(--heading);
+    background: rgba(20, 8, 10, 0.75);
+    border-radius: 999px;
+    pointer-events: none;
 }

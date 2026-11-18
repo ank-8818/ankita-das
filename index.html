@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ankita Das | Web developer and Illustrator</title>
-    <meta name="description" content="Portfolio of Ankita Das: websites and illustration.">
-    <meta property="og:title" content="Ankita Das | Web developer and illustrator">
+    <meta name="description" content="Portfolio of Ankita Das: brand identity, social media design, illustration, surface patterns and websites.">
+    <meta property="og:title" content="Ankita Das | Graphic designer, illustrator and web developer">
     <meta property="og:description" content="Websites, illustrations and patterns.">
     <meta property="og:image" content="https://ank-8818.github.io/ankita-das/assets/Preview.png">
 
@@ -28,8 +28,9 @@
     <link href="./styles/progress.css" rel="stylesheet">
     <link href="./styles/about-skills.css" rel="stylesheet">
     <link href="./styles/contact.css" rel="stylesheet">
+    <link href="./styles/motion.css" rel="stylesheet">
 
-
+    <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
@@ -45,7 +46,7 @@
             <li><a class="nav-link" href="#about">About</a></li>
             <li><a class="nav-link" href="#skills">Skills</a></li>
             <li><a class="nav-link" href="#contact">Contact</a></li>
-            <li><a class="nav-link" href="./assets/Ankita-Das-CV.pdf" target="_blank" rel="noopener">CV</a></li>     <!--CV pdf here-->
+            <li><a class="nav-link" id="cv-link" href="./assets/Ankita-Das-Graphic-Designer-CV.pdf" target="_blank" rel="noopener">CV</a></li>     <!--CV pdf here-->
         </ul>
 
     </header>
@@ -58,9 +59,8 @@
             <div class="hero-content">
                 <p class="hero-hello">Hello, I'm</p>
                 <h1 class="hero-name">Ankita Das</h1>
-                <!-- <p class="hero-role">Web developer and illustrator</p> -->
                 <p class="hero-role hero-role--web">Web developer</p>
-                <p class="hero-role hero-role--design">Illustrator</p>
+                <p class="hero-role hero-role--design">Graphic Designer &amp; Illustrator</p>
 
                 <p class="hero-intro hero-intro--web">I enjoy turning ideas into responsive, intuitive websites where every interaction has a purpose.</p>
                 <p class="hero-intro hero-intro--design">I enjoy turning ideas into illustrations and visual details that give them a personality.</p>
@@ -74,6 +74,13 @@
                     <button class="switch-btn" data-side="web" aria-pressed="true">Web dev</button>
                     <button class="switch-btn" data-side="design" aria-pressed="false">Design</button>                    
                 </div>
+
+                <span class="hero-peek-label">Selected work</span>
+                <a class="hero-peek" href="#work" aria-label="See my design work">
+                    <img src="./images/design/brand/drizzle-and-dot/dd-mockup-jars.webp" alt="Two honey jars, 500 g and 250 g, with the Drizzle & Dot label and a patterned tamper strip">
+                    <img src="./images/design/brand/daily-crumb/dc-mockup-packaging.webp" alt="Printed menu card, paper bag and bakery packaging on a table with pastries">
+                    <img src="./images/design/social/daily-crumb/dc-winter-edition.webp" alt="Social post showing an illustrated window with curtains pulled aside onto a snowy scene, with the headline Cold outside, warm inside.">
+                </a>
             </div>
 
 
@@ -99,10 +106,9 @@
 
             <!--Shown when the switch is on design-->
             <div class="work-design" data-panel="design" hidden>
-                <p class="work-lead">Patterns and Illustrations.</p>
-                <div class="gallery" id="design-grid"></div>
-
-                <!---shows only while designPieces is empty-->
+                <p class="work-lead">Brand identities, social media, illustration and patterns.</p>
+                <div class="design-tabs" id="design-tabs" role="group" aria-label="Filter design work"></div>
+                <div id="design-grid"></div>
                 <div class="empty" id="design-empty" hidden>
                     <img class="empty-img" src="./images/floral-element.svg" alt="">
                     <p>Design pieces are on their way.</p>
@@ -113,8 +119,13 @@
                 <div class="lightbox-inner">
                     <button class="btn btn-small btn-soft lightbox-close" type="button">Close</button>
                     <img class="lightbox-img" src="" alt="">
+                    <div class="lightbox-nav" hidden>
+                        <button class="btn btn-small btn-soft lightbox-prev" type="button" aria-label="Previous image">&larr; Prev</button>
+                        <span class="lightbox-count" aria-live="polite"></span>
+                        <button class="btn btn-small btn-soft lightbox-next" type="button" aria-label="Next image">Next &rarr;</button>
+                    </div>
                     <p class="lightbox-caption"></p>
-                    <a class="btn btn--small lightbox-shop" href="#" target="_blank" rel="noopener">View in shop</a>
+                    <a class="btn btn-small lightbox-shop" href="#" target="_blank" rel="noopener">View in shop</a>
                 </div>
             </dialog>
 
@@ -138,8 +149,7 @@
                 <h2 class="about-title" id="about-title">About me</h2>
 
                 <!--draft-->
-                <p>I studied mathematics and completed my MSc, but I've never really stopped being a student. Now I'm learning through design and web development—playing with colours, layouts, illustrations, and figuring out how a button goes from looking right to actually working.</p>
-                <p>I draw in Illustrator, build with HTML, CSS, and JavaScript, and occasionally turn those illustrations into patterns for my small shop.</p>
+                <p>I studied mathematics and completed my MSc, and I've never really stopped being a student. Now I put that curiosity into web development and design: I build sites with HTML, CSS, JavaScript, Node and Express, and I draw in Illustrator, turning my illustrations into patterns for my small shop. I like the place where the two meet, like figuring out how a button goes from looking right to actually working.</p>
                 <p>There's still a lot I'm learning, and honestly, that's half the fun.</p>
                 <a class="btn" href="#contact">Get in touch</a>
             </div>
@@ -178,7 +188,7 @@
                         <li class="skill">
                             <div class="skill-top">
                                 <span class="skill-name">JavaScript</span>
-                                <span class="skill-level"><span class="skill-dots" data-level="1" aria-hidden="true"></span> Learning</span>
+                                <span class="skill-level"><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
                             </div>
                             <p class="skill-note">DOM, events, form validation. Booking flow in Bloom & Co., quiz logic in Which Star Are You.</p>
                         </li>
@@ -188,14 +198,14 @@
                                 <span class="skill-name">Node.js &amp; Express</span>
                                 <span class="skill-level"><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
                             </div>
-                            <p class="skill-note">Routing, Middleware, Sessions, Error handling in Dear Me, blog.</p>
+                            <p class="skill-note">Routing, Middleware, Sessions, Error handling in "Dear Me," blog.</p>
                         </li>
                         <li class="skill">
                             <div class="skill-top">
                                 <span class="skill-name">EJS</span>
                                 <span class="skill-level"><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
                             </div>
-                            <p class="skill-note">Templating server-rendered pages in Dear Me, blog.</p>
+                            <p class="skill-note">Templating server-rendered pages in "Dear Me," blog.</p>
                         </li>
 
                         <li class="skill">
@@ -220,6 +230,13 @@
                         </li>
                         <li class="skill">
                             <div class="skill-top">
+                                <span class="skill-name">Adobe Photoshop</span>
+                                <span class="skill-level"><span class="skill-dots" data-level="1" aria-hidden="true"></span> Learning</span>
+                            </div>
+                            <p class="skill-note">Photo editing and placing my designs into mockup templates for patterns, packaging and social posts.</p>
+                        </li>
+                        <li class="skill">
+                            <div class="skill-top">
                                 <span class="skill-name">Seamless patterns</span>
                                 <span class="skill-level"><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
                             </div>
@@ -237,7 +254,7 @@
                                 <span class="skill-name">Logo &amp; Color theory</span>
                                 <span class="skill-level"><span class="skill-dots" data-level="2" aria-hidden="true"></span> Comfortable</span>
                             </div>
-                            <p class="skill-note">Bloom & Co. branding and visual identity, ongoing project for Drizzle &amp; dot.</p>
+                            <p class="skill-note">Brand identities for The Daily Crumb and Drizzle &amp; Dot, and Bloom &amp; Co.</p>
                         </li>
                         <li class="skill">
                             <div class="skill-top">
@@ -263,7 +280,7 @@
                             <div class="skill-top">
                                 <span class="skill-name">SQLite &amp; SQL</span>
                             </div>
-                            <p class="skill-note">Used schema design, constraints, joins, transactions in Dear Me, blog. Still strengthening concepts.</p>
+                            <p class="skill-note">Used schema design, constraints, joins, transactions in "Dear Me," blog. Still strengthening concepts.</p>
                         </li>
                         <li class="skill">
                             <div class="skill-top">
@@ -282,12 +299,6 @@
                             </div>
                             <p class="skill-note">Learning the basics of prototyping.</p>
                         </li>
-                        <li class="skill">
-                            <div class="skill-top">
-                                <span class="skill-name">Adobe Photoshop</span>
-                            </div>
-                            <p class="skill-note">Learning the basics- editing photos, getting used to the application.</p>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -300,7 +311,7 @@
             <div class="contact-intro">
                 <h2 class="contact-title" id="contact-title">Get in touch</h2>
                 <p>Have a project in mind, or just want to say hello? I'll get back to you soon.</p>
-                <p>Open to junior front-end roles, and to freelance websites, illustration and pattern commissions.</p>
+                <p>Open to junior graphic designer and front-end roles, and to freelance websites, design, illustration and pattern commissions.</p>
 
                 <ul class="contact-links">
                     <li><a href="mailto:ankitadas8818@gmail.com">ankitadas8818@gmail.com</a></li>
@@ -343,7 +354,7 @@
 
     <!--Footer-->
     <footer class="footer">
-        <p>&copy; 2026 Ankita Das. All artwork on this site is my own.</p>
+        <p>&copy; 2026 Ankita Das. Designs and illustrations are my own. Stock photos and mockup templates are credited in the captions.</p>
         <a href="#top">Back to top</a>
     </footer>
 
@@ -352,6 +363,7 @@
     <!--JS Script file-->
     <script src="./js/web-dev.js"></script>
     <script src="./js/design.js"></script>
+    <script src="./js/motion.js"></script>
     <script src="./js/progress.js"></script>
     <script src="./js/contact.js"></script>
 

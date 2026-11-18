@@ -1,0 +1,202 @@
+/* motion.css: link this AFTER all your other stylesheets.
+   Rules: animate only transform and opacity, 150-300 ms for hovers,
+   500-700 ms for entrances, and switch everything off for reduced motion. */
+
+/* ---------- Shared entrance (uses the 'translate' property, so it never fights 'transform') ---------- */
+@keyframes rise {
+    from { opacity: 0; translate: 0 1.25rem; }
+}
+
+/* ---------- 1. Hero text arrives in sequence ---------- */
+.hero-content > :not(.hero-peek) {
+    animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.hero-hello        { animation-delay: 0.05s; }
+.hero-name         { animation-delay: 0.15s; }
+.hero-role,
+.hero-intro        { animation-delay: 0.25s; }
+.hero-actions      { animation-delay: 0.35s; }
+.switch            { animation-delay: 0.42s; }
+.hero-peek-label   { animation-delay: 0.5s; }
+
+/* ---------- 2. Thumbnail card stack: overlaps, then fans out on hover ---------- */
+.hero-peek { display: none; }
+
+.hero-peek-label {
+    display: none;
+    margin: 1.5rem 0 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+[data-theme="design"] .hero-peek-label { display: block; }
+
+[data-theme="design"] .hero-peek {
+    display: flex;
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.hero-peek img {
+    --rot: 0deg;
+    --shift: 0rem;
+    height: 6rem;
+    width: auto;
+    background: var(--panel);
+    border: 1.5px solid var(--line);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0 var(--accent);
+    cursor: pointer;
+    transform: translateX(var(--shift)) rotate(var(--rot));
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.hero-peek img + img { margin-left: -2rem; }
+.hero-peek img:nth-child(1) { --rot: -4deg; }
+.hero-peek img:nth-child(2) { --rot: 2deg; }
+.hero-peek img:nth-child(3) { --rot: -2deg; }
+
+/* fan out with transform only, so nothing around it shifts */
+.hero-peek:hover img { --rot: 0deg; }
+.hero-peek:hover img:nth-child(2) { --shift: 1.25rem; }
+.hero-peek:hover img:nth-child(3) { --shift: 2.5rem; }
+
+.hero-peek img:hover {
+    z-index: 10;
+    transform: translate(calc(var(--shift) - 4px), -8px) scale(1.05);
+    box-shadow: 6px 6px 0 var(--accent);
+}
+
+/* thumbnails arrive last, one after another */
+[data-theme="design"] .hero-peek img {
+    animation: rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+[data-theme="design"] .hero-peek img:nth-child(1) { animation-delay: 0.55s; }
+[data-theme="design"] .hero-peek img:nth-child(2) { animation-delay: 0.65s; }
+[data-theme="design"] .hero-peek img:nth-child(3) { animation-delay: 0.75s; }
+
+/* ---------- 3. Nav links: underline slides in ---------- */
+.nav-link,
+.nav-link:hover {
+    border-bottom-color: transparent;
+}
+
+.nav-link {
+    background: linear-gradient(var(--accent), var(--accent)) left bottom / 0 2px no-repeat;
+    transition: background-size 0.25s ease, color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+    background-size: 100% 2px;
+}
+
+/* ---------- 4. Switching between Web dev and Design fades the new panel in ---------- */
+@supports not (view-transition-name: none) {
+    [data-panel]:not([hidden]) {
+        animation: rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+}
+
+/* Browsers with view transitions crossfade the whole page when the switch is used (see motion.js) */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.45s;
+}
+
+/* ---------- 5. One hover language everywhere: lift plus a colored offset shadow ---------- */
+.card {
+    box-shadow: 0 0 0 var(--accent);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 4px 4px 0 var(--accent);
+}
+
+/* ---------- 6. Sections ease in as they scroll into view (needs the .js class and motion.js) ---------- */
+.js .reveal {
+    opacity: 0;
+    translate: 0 1.25rem;
+    transition: opacity 0.7s ease, translate 0.7s ease, background-color 0.3s ease;
+}
+
+.js .reveal.is-visible {
+    opacity: 1;
+    translate: 0 0;
+}
+
+/* ---------- 7. Design brand cards: each cover sits on its own brand color, edge to edge ---------- */
+.design-sec[data-cat="brand"] .work-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+}
+
+.work-design .card-media {
+    display: block;
+    padding: 0;
+    aspect-ratio: 4 / 3;
+    background: var(--tint, var(--panel));
+}
+
+.work-design .card-media .piece-btn,
+.work-design .card-media .piece-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+.work-design .card-media .piece-btn { overflow: hidden; }
+
+.work-design .card-shot {
+    border: 0;
+    box-shadow: none;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.work-design .card:hover .card-shot { transform: scale(1.03); }
+
+/* ---------- 8. Thin scroll-progress line along the top (only where the browser supports it) ---------- */
+@supports (animation-timeline: scroll()) {
+    @keyframes progress-grow { to { scale: 1 1; } }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 20;
+        height: 3px;
+        background: var(--accent);
+        transform-origin: left;
+        scale: 0 1;
+        animation: progress-grow linear both;
+        animation-timeline: scroll(root);
+        pointer-events: none;
+    }
+}
+
+/* ---------- Reduced motion: no animation at all ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .hero-content > *,
+    [data-theme="design"] .hero-peek img,
+    [data-panel]:not([hidden]) {
+        animation: none;
+    }
+
+    .hero-peek img,
+    .nav-link,
+    .card,
+    .work-design .card-shot {
+        transition: none;
+    }
+
+    body::before { display: none; }
+
+    .js .reveal {
+        opacity: 1;
+        translate: none;
+        transition: none;
+    }
+}

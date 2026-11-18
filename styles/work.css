@@ -15,6 +15,7 @@
 /* ----------- Section band -------------- */
 .work {
     padding: clamp(2rem, 8vw, 6rem) clamp(1rem, 5vw, 4rem);
+    padding-top: clamp(1rem, 3vw, 2.5rem);
     background: var(--bg);
     scroll-margin-top: 4.25rem;
     transition: background-color 0.3s ease;
@@ -129,7 +130,7 @@
     font-size: 0.8rem;
 }
 
-/* ---------- Empty state (design placeholder for now) ---------- */
+/* ---------- Empty state ---------- */
 .empty {
   display: flex;
   flex-direction: column;
@@ -139,7 +140,7 @@
   text-align: center;
 }
  
-.empty__img {
+.empty-img {
   width: 7rem;
   height: auto;
   opacity: 0.8;

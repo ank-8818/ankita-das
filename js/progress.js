@@ -33,23 +33,16 @@ const timelines = {
         //ongoing projects
 
         {
-            title: "Drizzle & Dot (a fictional branding project)",
-            status: "doing",
-            when: "Oct 2026",
-            note: "Done with the logo suite and patterns. Currently writing brand guidelines and usage rules."
-        },
-
-        {
             title: "Gemini",
             status: "doing",
-            when: "Oct 2026",
+            when: " Started Oct 2026",
             note: "Line work, coloring and detailing."
         },
 
         {
             title: "Tomatoes & mushrooms pattern",
             status: "doing",
-            when: "Oct 2026",
+            when: " Started Oct 2026",
             note: "Coloring and detailing."
         }
 

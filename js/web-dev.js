@@ -8,6 +8,27 @@ const links = document.querySelector("#nav-links");
 
 const webGrid = document.querySelector("#work-grid");
 
+const cvLink = document.querySelector("#cv-link");
+
+//---------------Changing CV according to the chosen section
+const cvFiles = {
+    web: "./assets/Ankita-Das-Web-Dev-CV.pdf",
+    design: "./assets/Ankita-Das-Graphic-Designer-CV.pdf"
+};
+
+function updateCv() {
+    const active = document.querySelector('.switch-btn[aria-pressed="true"]');
+    cvLink.href = cvFiles[active ? active.dataset.side : "design"];
+}
+
+document.querySelectorAll(".switch-btn").forEach(btn =>
+    btn.addEventListener("click", () => setTimeout(updateCv, 0)));   // runs after your toggle updates
+updateCv();
+
+//  Open on the design side by default, or whichever side the link asks for (?side=web)
+const startSide = new URLSearchParams(location.search).get("side") || "design";
+const startBtn = document.querySelector(`.switch-btn[data-side="${startSide}"]`);
+if (startBtn) startBtn.click();
 
 
 // ----------------- Collection of Web dev projects (Edit this to add more projects) -----------------
@@ -20,7 +41,7 @@ const webProjects = [
         image: "./images/web-dev/desktop/dear-me-desktop.png",
         mobile:"./images/web-dev/mobile/dear-me-mobile.png",
         alt: "Screenshot of the Dear Me, website",
-        live: "https://dear-me-production.up.railway.app",
+        // live: "https://dear-me-production.up.railway.app",
         code: "https://github.com/ank-8818/dear-me"
     },
 
