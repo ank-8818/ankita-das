@@ -25,10 +25,19 @@ document.querySelectorAll(".switch-btn").forEach(btn =>
     btn.addEventListener("click", () => setTimeout(updateCv, 0)));   // runs after your toggle updates
 updateCv();
 
-//  Open on the design side by default, or whichever side the link asks for (?side=web)
-const startSide = new URLSearchParams(location.search).get("side") || "design";
-const startBtn = document.querySelector(`.switch-btn[data-side="${startSide}"]`);
-if (startBtn) startBtn.click();
+// 1. FIRST: Attach the event listeners to switch sides
+switchButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const side = button.dataset.side;
+    root.dataset.theme = side;
+
+    document.querySelectorAll('[data-panel]').forEach(panel => {
+      panel.hidden = panel.dataset.panel !== side;
+    });
+
+    switchButtons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+  });
+});
 
 
 // ----------------- Collection of Web dev projects (Edit this to add more projects) -----------------
@@ -129,3 +138,9 @@ webGrid.innerHTML = webProjects.map(p => `
         </div>
     </article>
 `).join("");
+
+// 2. LAST: Check the URL and trigger the click 
+// Placing this at the end ensures all 'click' listeners are fully loaded and ready to fire.
+const startSide = new URLSearchParams(location.search).get("side") || "design";
+const startBtn = document.querySelector(`.switch-btn[data-side="${startSide}"]`);
+if (startBtn) startBtn.click();
