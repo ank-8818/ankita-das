@@ -50,7 +50,7 @@ const designPieces = [
         kind: "Brand identity",
         summary: "A café and bakery identity that changes with the seasons without losing its sunrise.",
         tags: ["Logo suite", "Menu", "Stamps", "Stationery"],
-        link: "./assets/case-studies/the-daily-crumb.pdf",
+        link: "./assets/case-studies/daily-crumb.pdf",
         linkLabel: "View case study",
         note: "Concept project: seasonal logo editions, menu, loyalty card, stationery and packaging.",
         image: "./images/design/brand/daily-crumb/dc-board-preview.webp",
