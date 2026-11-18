@@ -25,21 +25,6 @@ document.querySelectorAll(".switch-btn").forEach(btn =>
     btn.addEventListener("click", () => setTimeout(updateCv, 0)));   // runs after your toggle updates
 updateCv();
 
-// 1. FIRST: Attach the event listeners to switch sides
-switchButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const side = button.dataset.side;
-    root.dataset.theme = side;
-
-    document.querySelectorAll('[data-panel]').forEach(panel => {
-      panel.hidden = panel.dataset.panel !== side;
-    });
-
-    switchButtons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
-  });
-});
-
-
 // ----------------- Collection of Web dev projects (Edit this to add more projects) -----------------
 const webProjects = [
 
@@ -139,8 +124,36 @@ webGrid.innerHTML = webProjects.map(p => `
     </article>
 `).join("");
 
-// 2. LAST: Check the URL and trigger the click 
-// Placing this at the end ensures all 'click' listeners are fully loaded and ready to fire.
-const startSide = new URLSearchParams(location.search).get("side") || "design";
+// ------------------- To switch sides between the web dev and design------------
+// 1. Attach listeners FIRST
+switchButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const side = button.dataset.side;
+        root.dataset.theme = side;
+
+        document.querySelectorAll('[data-panel]').forEach(panel => {
+            panel.hidden = panel.dataset.panel !== side;
+        });
+
+        switchButtons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+        
+        updateCv();
+        
+        // Quietly update the URL in the address bar without reloading the page
+        const url = new URL(window.location);
+        url.searchParams.set('side', side);
+        window.history.replaceState({}, '', url);
+    });
+});
+
+// 2. Trigger the correct side based on the URL LAST
+const params = new URLSearchParams(window.location.search);
+const startSide = params.get("side") || "design";
 const startBtn = document.querySelector(`.switch-btn[data-side="${startSide}"]`);
-if (startBtn) startBtn.click();
+
+if (startBtn) {
+    startBtn.click();
+} else {
+    // Fallback if the URL has an invalid parameter like ?side=pizza
+    document.querySelector('.switch-btn[data-side="design"]').click();
+}
